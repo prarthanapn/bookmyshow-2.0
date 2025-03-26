@@ -1,8 +1,8 @@
 # bookmyshow-2.0
 ## Problem Description
-You are required to build a BookMyShow-2.0 (Only Frontend) website using React.js and Bootstrap. The objective is to replicate the look and feel of BookMyShow while incorporating key features and functionalities. 
+ build a BookMyShow-2.0 (Only Frontend) website. The objective is to replicate the look and feel of BookMyShow while incorporating key features and functionalities. 
 
-## Features Required
+## Features include in my project
 1. **Responsive Navigation Bar**  
    - **Elements to include:**
      - Logo placement (left corner)
