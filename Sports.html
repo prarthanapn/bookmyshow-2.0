@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events in Bengaluru</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .filters {
+      width: 250px;
+      padding: 20px;
+      border-right: 1px solid #ccc;
+    }
+    .events {
+      flex-grow: 1;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .event-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .event-card img {
+      width: 100%;
+      height: auto;
+    }
+    .event-details {
+      padding: 10px;
+    }
+    .filter-group {
+      margin-bottom: 15px;
+    }
+    .filter-group select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="filters">
+    <h2>Filters</h2>
+    <div class="filter-group">
+      <h3>Date</h3>
+      <select id="dateFilter">
+        <option value="">All Dates</option>
+        <option value="Today">Today</option>
+        <option value="Tomorrow">Tomorrow</option>
+        <option value="This Weekend">This Weekend</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <h3>Categories</h3>
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="Running">Running</option>
+        <option value="Cricket">Cricket</option>
+        <option value="Chess">Chess</option>
+        <option value="Cycling">Cycling</option>
+        <option value="Football">Football</option>
+        <option value="Walking">Walking</option>
+        <option value="Motorsports">Motorsports</option>
+        <option value="Badminton">Badminton</option>
+        <option value="Mixed Martial Arts">Mixed Martial Arts</option>
+        <option value="Tennis">Tennis</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <h3>Price</h3>
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="Free">Free</option>
+        <option value="0-500">0 - 500</option>
+        <option value="501-2000">501 - 2000</option>
+        <option value="Above 2000">Above 2000</option>
+      </select>
+    </div>
+  </div>
+  <div class="events" id="eventList">
+    <div class="event-card" data-date="Sun, 30 Mar" data-category="Football" data-price="500">
+      <img src="Sports/sports1.avif" alt="Event 1">
+      <div class="event-details">
+        <h3>BRAZIL LEGENDS vs INDIA ALL STARS</h3>
+        <p>Sun, 30 Mar</p>
+        <p>Football</p>
+        <span>₹500 onwards</span>
+      </div>
+    </div>
+    <div class="event-card" data-date="Sat, 12 Apr" data-category="Drifting" data-price="1500">
+      <img src="Sports/sports2.avif" alt="Event 2">
+      <div class="event-details">
+        <h3>Red Bull Moto Jam 2025</h3>
+        <p>Sat, 12 Apr</p>
+        <p>Drifting</p>
+        <span>₹1500 onwards</span>
+      </div>
+    </div>
+    <div class="event-card" data-date="Sun, 30 Mar" data-category="Marathon" data-price="250">
+      <img src="Sports/sports3.avif" alt="Event 3">
+      <div class="event-details">
+        <h3>The SIStra Run</h3>
+        <p>Sun, 30 Mar</p>
+        <p>Marathon</p>
+        <span>₹250</span>
+      </div>
+    </div>
+    <div class="event-card" data-date="Thu, 15 May" data-category="T20" data-price="999">
+      <img src="Sports/sports4.avif" alt="Event 4">
+      <div class="event-details">
+        <h3>Mumbai Indians vs Delhi Capitals</h3>
+        <p>Thu, 15 May</p>
+        <p>T20</p>
+        <span>₹999 onwards</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    function filterEvents() {
+      const dateFilter = document.getElementById("dateFilter").value;
+      const categoryFilter = document.getElementById("categoryFilter").value;
+      const priceFilter = document.getElementById("priceFilter").value;
+
+      // Debug log to check filter values
+      console.log("Filters:", { dateFilter, categoryFilter, priceFilter });
+
+      document.querySelectorAll(".event-card").forEach(event => {
+        const eventDate = event.getAttribute("data-date");
+        const eventCategory = event.getAttribute("data-category");
+        const eventPrice = parseInt(event.getAttribute("data-price"));
+
+        let show = true;
+        if (dateFilter && !eventDate.includes(dateFilter)) show = false;
+        if (categoryFilter && eventCategory !== categoryFilter) show = false;
+        if (priceFilter) {
+          if (priceFilter === "Free" && eventPrice > 0) show = false;
+          else if (priceFilter === "0-500" && !(eventPrice >= 0 && eventPrice <= 500)) show = false;
+          else if (priceFilter === "501-2000" && !(eventPrice >= 501 && eventPrice <= 2000)) show = false;
+          else if (priceFilter === "Above 2000" && eventPrice <= 2000) show = false;
+        }
+
+        console.log(`Event ${event.querySelector('h3').textContent}: show = ${show}`);
+        event.style.display = show ? "block" : "none";
+      });
+    }
+
+    document.getElementById("dateFilter").addEventListener("change", filterEvents);
+    document.getElementById("categoryFilter").addEventListener("change", filterEvents);
+    document.getElementById("priceFilter").addEventListener("change", filterEvents);
+  </script>
+</body>
+</html>
+

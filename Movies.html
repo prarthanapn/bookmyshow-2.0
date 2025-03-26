@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Listing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .movie-card {
+            margin-bottom: 20px;
+        }
+        .movie-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Movies Now Showing</h2>
+        <div class="row" id="movies-list"></div>
+    </div>
+    
+    <script>
+        const movies = [
+            {title: "Chhaava", rating: "9.3/10", votes: "325.3K", age: "UA16+", language: "Hindi", image: "movies/Chhaava.avif"},
+            {title: "The Diplomat", rating: "8.8/10", votes: "16.2K", age: "UA13+", language: "Hindi", image: "movies/TheDiplomat.avif"},
+            {title: "Salaar: Cease Fire - Part 1", rating: "8.5/10", votes: "656.8K", age: "A", language: "Telugu, Kannada, Hindi, Tamil", image: "movies/Salaar.avif"},
+            {title: "Dragon", rating: "9.3/10", votes: "65.7K", age: "UA16+", language: "Tamil", image: "movies/Dragon.avif"},
+            {title: "Mickey 17", rating: "8/10", votes: "5K", age: "A", language: "English", image: "movies/Mikey17.avif"},
+            {title: "Shanmukha", rating: "7.4/10", votes: "188", age: "UA16+", language: "Telugu", image: "movies/shanmukha.avif"},
+            {title: "Choo Mantar", rating: "9.1/10", votes: "6K", age: "UA", language: "Kannada", image: "movies/choo-mantar.avif"},
+            {title: "Pintu Ki Pappi", rating: "7.6/10", votes: "197", age: "UA13+", language: "Hindi", image: "movies/pinto ki pappi.avif"},
+            {title: "L2: Empuraan", rating: "", votes: "437K Likes", age: "UA16+", language: "Malayalam, Telugu, Tamil", image: "movies/Empurann.avif"},
+            {title: "Sikandar", rating: "", votes: "328.4K Likes", age: "UA13+", language: "Hindi", image: "movies/sikander.avif"},
+            {title: "Veera Dheera Sooran - Part 2", rating: "", votes: "34.4K Likes", age: "UA13+", language: "Tamil, Telugu", image: "movies/Veera_Dheera.avif"},
+            {title: "Robinhood", rating: "", votes: "87K Likes", age: "UA13+", language: "Telugu", image: "movies/Robinhood.avif"},
+            {title: "Court: State vs A Nobody", rating: "9.5/10", votes: "39.3K", age: "UA13+", language: "Telugu", image: "movies/courtstate.avif"},
+            {title: "Manada Kadalu", rating: "", votes: "25.1K Likes", age: "UA16+", language: "Kannada", image: "movies/Manadakadalu.avif"},
+            {title: "Snow White", rating: "6.9/10", votes: "957", age: "U", language: "English, Hindi", image: "movies/snowwhite.avif"},
+            {title: "Mad Square", rating: "", votes: "88K Likes", age: "UA16+", language: "Telugu", image: "movies/MadSquare.avif"}
+        ];
+        
+        const moviesList = document.getElementById('movies-list');
+        
+        movies.forEach(movie => {
+            const movieCard = `
+                <div class="col-md-3 movie-card">
+                    <div class="card">
+                        <img src="${movie.image}" class="card-img-top" alt="${movie.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${movie.title}</h5>
+                            <p class="card-text">${movie.age} | ${movie.language}</p>
+                            <p class="card-text"><strong>${movie.rating}</strong> ${movie.votes}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            moviesList.innerHTML += movieCard;
+        });
+    </script>
+</body>
+</html>

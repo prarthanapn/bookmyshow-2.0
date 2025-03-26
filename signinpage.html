@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyShow Authentication</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Ensure full height and responsive background */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #D32F2F; /* Red background */
+        }
+
+        /* Splash Screen */
+        #splash {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #D32F2F;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        #splash img {
+            width: 50%; /* Make the logo responsive */
+            max-width: 500px;
+            min-width: 150px;
+        }
+
+        /* Larger Form Container */
+        .form-container {
+            background: white;
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 95%;
+            max-width: 500px; /* Increased width */
+            text-align: center;
+            display: none; /* Initially hidden */
+        }
+
+        /* Responsive Logo Inside Form */
+        .form-logo {
+            width: 60%;
+            max-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        /* Toggle Buttons */
+        .toggle-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px; /* More spacing */
+        }
+        .toggle-buttons button {
+            width: 50%;
+            border: none;
+            padding: 12px;
+            font-size: 18px; /* Slightly bigger text */
+            cursor: pointer;
+        }
+        .active-tab {
+            background-color: #D32F2F;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Bigger Input Fields */
+        .form-control {
+            font-size: 16px; /* Bigger input text */
+            padding: 12px; /* More padding for easy typing */
+        }
+
+        /* Bigger Button */
+        .btn-danger {
+            font-size: 18px;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash">
+        <img src="logo.png" alt="BookMyShow Logo">
+    </div>
+
+    <!-- Signup/Login Form -->
+    <div class="form-container" id="auth-container">
+        <img src="logo.png" alt="BookMyShow Logo" class="form-logo"> <!-- Logo inside form -->
+
+        <div class="toggle-buttons">
+            <button id="login-btn" class="active-tab" onclick="showLogin()">Login</button>
+            <button id="signup-btn" onclick="showSignup()">Signup</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" onsubmit="login(event)">
+            <div class="mb-3">
+                <input type="email" class="form-control" id="login-email" placeholder="Email Address" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="login-password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-danger w-100">Login</button>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="hidden" onsubmit="signup(event)">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="signup-name" placeholder="Full Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" id="signup-email" placeholder="Email Address" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="signup-password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-danger w-100">Signup</button>
+        </form>
+    </div>
+
+    <script>
+        // Hide Splash Screen after 1 second
+        setTimeout(() => {
+            document.getElementById("splash").style.display = "none";
+            document.getElementById("auth-container").style.display = "block";
+        }, 1000); // 1 second delay
+
+        function showLogin() {
+            document.getElementById("login-form").classList.remove("hidden");
+            document.getElementById("signup-form").classList.add("hidden");
+            document.getElementById("login-btn").classList.add("active-tab");
+            document.getElementById("signup-btn").classList.remove("active-tab");
+        }
+
+        function showSignup() {
+            document.getElementById("signup-form").classList.remove("hidden");
+            document.getElementById("login-form").classList.add("hidden");
+            document.getElementById("signup-btn").classList.add("active-tab");
+            document.getElementById("login-btn").classList.remove("active-tab");
+        }
+
+        // Redirect to main page after login
+        function login(event) {
+            event.preventDefault();
+            window.location.href = "main.html"; // Redirect to main page
+        }
+
+        // Redirect to main page after signup
+        function signup(event) {
+            event.preventDefault();
+            window.location.href = "main.html"; // Redirect to main page
+        }
+    </script>
+
+</body>
+</html>
