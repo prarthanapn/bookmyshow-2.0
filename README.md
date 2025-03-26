@@ -55,5 +55,12 @@ You are required to build a BookMyShow-2.0 (Only Frontend) website using React.j
 ![image](https://github.com/user-attachments/assets/3201a552-7b82-4b88-b66c-f53cd20c2a90)
 
 ![image](https://github.com/user-attachments/assets/d42dffbe-331e-4c19-8d6a-fa56b31b3de1)
+![image](https://github.com/user-attachments/assets/e4164e93-b345-4c26-9997-47dc875d7420)
+![image](https://github.com/user-attachments/assets/fbdfe760-12fc-4a61-8d8d-2a9daeacd0b2)
+![image](https://github.com/user-attachments/assets/cd17bb7b-eb75-4b31-af6a-f6d33c6ddb19)
+
+![image](https://github.com/user-attachments/assets/762cdc49-8749-4a91-ac8a-b540da2be8da)
+![image](https://github.com/user-attachments/assets/a84128f2-9a03-46ac-9524-f46d24084267)
+![image](https://github.com/user-attachments/assets/e0eafd82-c221-4469-8312-586f53825acb)
 
 
